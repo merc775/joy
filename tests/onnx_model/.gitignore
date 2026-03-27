@@ -1,0 +1,14 @@
+# Lesson 5 / 6 export artefacts.  Regenerate them with
+#   python3 joy/tests/python_tests/test_lesson5.py
+#
+# These files can be very large for the full Qwen3-0.6B model, so we
+# keep them out of git by default.  The single exception is the
+# teaching-scale `qwen3_tiny.onnx` (~3 MB) which is small enough to
+# version directly -- it lets a new clone open Netron and inspect the
+# expected ONNX layout without first running the export pipeline.
+*.onnx
+*.onnx_data
+*.weights
+*.proto
+!.gitignore
+!qwen3_tiny.onnx

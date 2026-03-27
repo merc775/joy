@@ -1,0 +1,166 @@
+# =====================================================================
+# joy compiler -- top-level .gitignore
+#
+# This file is the single source of truth for what is NOT versioned.
+# Subdirectory .gitignore files (e.g. tests/onnx_model/.gitignore) may
+# add further exclusions on top of these rules.
+# =====================================================================
+
+# ---- CMake / Ninja build trees ---------------------------------------
+build/
+build-*/
+out/
+cmake-build-*/
+
+# ---- CMake transient files (when configured in-source) ---------------
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+CMakeUserPresets.json
+compile_commands.json
+install_manifest.txt
+*.cmake.in.out
+
+# ---- Ninja transient files -------------------------------------------
+.ninja_deps
+.ninja_log
+build.ninja
+rules.ninja
+
+# ---- Native build artefacts ------------------------------------------
+*.o
+*.obj
+*.lo
+*.a
+*.la
+*.so
+*.so.*
+*.dylib
+*.dll
+*.exe
+*.exp
+*.pdb
+
+# ---- CUDA / nvcc transient files -------------------------------------
+*.fatbin
+*.cubin
+*.ptx
+*.cu.o
+*.cudafe1.*
+*.cudafe2.*
+*.cpp[1-9].ii
+*.module_id
+
+# ---- LLVM / MLIR tool output -----------------------------------------
+*.bc
+*.ll
+*.tmp.mlir
+*.tmp.ll
+
+# ---- TableGen generated headers --------------------------------------
+# These live under build/include/joy/dialect/<X>/{*.h.inc,*.cpp.inc,*.inc.d}
+# and are already covered by the build/ rule.  Keep listed here defensively
+# in case anyone configures CMake to emit them in-source.
+*.h.inc
+*.cpp.inc
+*.inc.d
+
+# ---- Python byte code / package caches -------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+.python-version
+
+# ---- Python packaging artefacts --------------------------------------
+*.egg
+*.egg-info/
+.eggs/
+dist/
+sdist/
+wheels/
+*.whl
+pip-wheel-metadata/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# ---- Python QA / test caches -----------------------------------------
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.pyre/
+.pytype/
+.dmypy.json
+.coverage
+.coverage.*
+htmlcov/
+nosetests.xml
+coverage.xml
+*.cover
+.tox/
+.nox/
+.cache/
+
+# ---- Python virtual environments -------------------------------------
+.venv/
+venv/
+env/
+.env
+.envrc
+.direnv/
+
+# ---- Jupyter / IPython -----------------------------------------------
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+profile_default/
+ipython_config.py
+
+# ---- Editor / IDE configs --------------------------------------------
+.vscode/
+.idea/
+*.iml
+*.code-workspace
+.cursor/
+*.swp
+*.swo
+*~
+.*.un~
+
+# ---- OS-level cruft --------------------------------------------------
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# ---- Backups / merge leftovers ---------------------------------------
+*.bak
+*.orig
+*.rej
+*.old
+*.tmp
+
+# ---- Logs / cores ----------------------------------------------------
+*.log
+log/
+logs/
+core
+core.*
+nohup.out
+
+# ---- Local-only model weights & ONNX exports -------------------------
+# Full Qwen3-0.6B safetensors are 1+ GB; pin nothing model-sized into git.
+*.safetensors
+*.bin.weights
+*.ckpt
+*.pt
+*.pth
+# (tests/onnx_model/ has its own narrower .gitignore for *.onnx)
+
+# ---- Misc local scratch ----------------------------------------------
+scratch/
+tmp/
+.tmp/
